@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{% block content %}
+{% load static %}
+  <div style="margin-left:380px;height:400px;width:600px;background-color:#e6faff; margin-top:50px;"><br>
+  <h2 style="margin-left:170px;"><I>Payment Details</I></h2>
+  <form method="POST"  novalidate style="margin-top:-110px;" action="{% url 'congrats' %}">
+       <center>
+        <table >
+
+ {% csrf_token %}
+           <tr>
+               <td><label>Name:</label></td>
+              <td><input type="text" value="{{user}}" disabled></td>
+            </tr>
+ {% for fm in form  %}
+            <tr>
+                <td>{{fm.label_tag}}</td>
+                <td>{{fm}}</td>
+                <td>{{fm.errors}}</td><br>
+</tr>
+ {% endfor %}
+       <tr>
+               <td><label>Total Bill:</label></td>
+              <td><input type="text" value="Rs.{{total}}"></td>
+            </tr>
+             </table>
+       </center>
+        <br>
+      <button type="submit" class="btn btn-secondary btn-sm" style="margin-left:36vh; margin-top:-6vh;">Proceed</button>
+
+</form>
+  </div>
+{% endblock %}
